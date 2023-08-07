@@ -2470,7 +2470,7 @@ game:GetService("Workspace").Camera:GetPropertyChangedSignal("CameraType"):Conne
             local perk3 = player.PlayerGui.LootReceived.LootReceived.Info.Perk3.Text:gsub("[^%w%s_]+", "")
         
             if player.PlayerGui.LootReceived.LootReceived.ItemInfo.Tier.Text == "Tier 5" then
-                if containsPerk(perk1:lower()) or containsPerk(perk2:lower()) or containsPerk(perk3:lower()) or filler == true then
+                if containsPerk(perk1:lower()) or containsPerk(perk2:lower()) or containsPerk(perk3:lower()) then
                     keep()
                 else
                     sell()
