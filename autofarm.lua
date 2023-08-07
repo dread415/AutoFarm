@@ -2446,6 +2446,7 @@ missionRewards.Chests.Box2.ChestImage.Chest.RaidChest.Glow.Glow:GetPropertyChang
         until missionRewards.Playerlist.Visible == true
     end
 )
+--Infinite tower Autofarm Script
 local place = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 
 function getWave()
@@ -2914,7 +2915,7 @@ game.NetworkClient.ChildRemoved:Connect(
 coroutine.wrap(
     function()
         local cQ = c:WaitForChild("RobloxPromptGui")
-        local cR = cQ:WaitForChild("promptOverlay")
+        local cR = cQ:WaitForChild("promptOverlay", math.huge)
         local cS = cR:WaitForChild("ErrorPrompt")
         local cT = cS:WaitForChild("MessageArea")
         local cU = cT:WaitForChild("ErrorFrame")
@@ -2932,7 +2933,7 @@ coroutine.wrap(
 coroutine.wrap(
     function()
         local cQ = c:WaitForChild("RobloxPromptGui")
-        local cR = cQ:WaitForChild("promptOverlay")
+        local cR = cQ:WaitForChild("promptOverlay", math.huge)
         local cS = cR:WaitForChild("ErrorPrompt")
         local cT = cS:WaitForChild("MessageArea")
         local cU = cT:WaitForChild("ErrorFrame")
