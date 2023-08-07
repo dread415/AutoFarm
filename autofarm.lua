@@ -2369,63 +2369,7 @@ k.Shared.Missions.MissionFinished.OnClientEvent:Connect(
         bG.Text = "EndTime: " .. os.date("%I:%M %p")
     end
 )
---[[
-for aA, B in pairs(Y) do
-    if game.PlaceId == B thenClick(lootReceived.Info.Skip.Sell)
-        local cj = H.PlayerGui.MissionRewards.MissionRewards
-        local cs = k.Shared.VIP.IsExtraDrop:InvokeServer()
-        cj.Countdown:GetPropertyChangedSignal("Text"):Connect( -- opens first chest
-            function()
-                if cj.Countdown.Text == "Pick up your gold! (1)" then
-                    repeat
-                        wait()
-                    until cj.Chests.Visible and cj.Chests.Box1.Visible and cj.Chests.Box2.Visible and
-                        cj.Chests.Box1.ChestImage.Select.Visible
-                    repeat
-                        aT(cj.Chests.Box1.ChestImage.Select)
-                        wait()
-                    until cj.OpenChest.Countdown.text == "0"
-                end
-            end
-        )
-        cj.OpenChest.Countdown:GetPropertyChangedSignal("Text"):Connect( -- clicks the next button
-            function()
-                if cj.OpenChest.Countdown.Text == "0" then
-                    repeat
-                        wait()
-                    until cj.OpenChest:WaitForChild("Next") and cj.OpenChest:FindFirstChild("Next").Visible
-                    aT(cj.OpenChest.Next.TextLabel)
-                end
-            end
-        )
-        cj.Chests.Box1.ChestImage.ChildAdded:Connect( -- opens next chest
-            function(ct)
-                if ct.Name == "ViewportFrame" and not cs then
-                    aT(cj.OpenChest.Next.TextLabel)
-                else
-                    aT(cj.Chests.Box2.ChestImage.VIP.TextLabel)
-                    repeat
-                        wait()
-                    until cj.OpenChest.Chest:FindFirstChild("RaidChest")
-                    wait(1)
-                    repeat
-                        aT(cj.Chests.Box2.ChestImage.Select)
-                        wait()
-                    until cj.OpenChest.Countdown.text == "0"
-                end
-            end
-        )
-        cj.Chests.Box2.ChestImage.ChildAdded:Connect( -- clicks next again
-            function(ct)
-                if ct.Name == "ViewportFrame" and cs then
-                    wait()
-                    aT(cj.OpenChest.Next.TextLabel)
-                end
-            end
-        )
-    end
-end
---]]
+
 local player = game:GetService("Players").LocalPlayer
 local missionRewards = player.PlayerGui.MissionRewards.MissionRewards
 local lootReceived = player.PlayerGui.LootReceived.LootReceived
@@ -2470,7 +2414,7 @@ game:GetService("Workspace").Camera:GetPropertyChangedSignal("CameraType"):Conne
             local perk3 = player.PlayerGui.LootReceived.LootReceived.Info.Perk3.Text:gsub("[^%w%s_]+", "")
         
             if player.PlayerGui.LootReceived.LootReceived.ItemInfo.Tier.Text == "Tier 5" then
-                if containsPerk(perk1:lower()) or containsPerk(perk2:lower()) or containsPerk(perk3:lower()) then
+                if containsPerk(perk1:lower()) or containsPerk(perk2:lower()) or containsPerk(perk3:lower()) or filler then
                     keep()
                 else
                     sell()
